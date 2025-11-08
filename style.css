@@ -1,0 +1,1500 @@
+/* ========== POPUP SELAMAT DATANG ========== */
+.welcome-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  backdrop-filter: blur(4px);
+}
+
+/* Saat aktif */
+.welcome-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Konten popup */
+.popup-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  animation: popupFade 0.5s ease forwards;
+}
+
+/* Animasi muncul */
+@keyframes popupFade {
+  0% {
+    transform: translateY(-30px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Tombol X */
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #1e40af;
+  color: white;
+  border: none;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close-popup:hover {
+  background: #2563eb;
+}
+
+/* Isi popup */
+.popup-logo {
+  width: 100px;
+  margin: 15px 0;
+}
+.popup-content h2 {
+  font-size: 26px;
+  color: #004cff;
+  font-weight: 700;
+}
+.popup-content p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 15px;
+}
+.popup-footer {
+  display: block;
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+  background: #e5e5e5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+/* ===== TOP BAR ===== */
+.top-bar {
+  background-color: #001b5e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 40px;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden; /* penting: cegah sisa pixel di bawah */
+  border-bottom: none; /* pastikan tidak ada garis bawah */
+}
+
+.top-bar i {
+  margin: 0 6px;
+  vertical-align: middle;
+}
+
+.separator {
+  margin: 0 10px;
+  color: #3a8bff;
+}
+
+.left-info,
+.right-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Ikon sosial media di kanan */
+.right-info i {
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.right-info i:hover {
+  transform: scale(1.2);
+  color: #3a8bff;
+}
+
+/* Link dalam top bar */
+.top-bar a {
+  color: white;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.top-bar a:hover {
+  color: #3a8bff;
+  text-decoration: underline;
+}
+
+/* ===== GLOBAL FIX ===== */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #000; /* opsional biar jelas kontras */
+}
+
+/* Jika elemen di bawah top bar ada margin-top, hapus jaraknya */
+header, nav, main, section {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* ===== NAVBAR ===== */
+header {
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+
+.logo img {
+  height: 94px;
+  transition: transform 0.3s;
+}
+
+.logo img:hover {
+  transform: scale(1.15);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* ===== MENU LINK ===== */
+nav ul li a {
+  text-decoration: none;
+  color: #001b5e;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s;
+  padding-bottom: 6px;
+}
+/* ===== MENU LINK ===== */
+nav ul li a {
+  text-decoration: none;
+  color: #001b5e;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.2s;
+  padding-bottom: 6px;
+}
+
+/* Garis bawah default: disembunyikan */
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #007bff;
+  transition: width 0.3s ease;
+}
+
+/* Garis hanya muncul saat hover ATAU aktif */
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+/* Warna aktif */
+nav ul li a.active {
+  color: #007bff;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.login-btn {
+  background: linear-gradient(90deg, #007bff, #00b3ff);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.4s;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #001b5e;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  nav ul {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 230px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 0 0 15px 15px;
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+  }
+
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .login-btn {
+    display: none;
+  }
+
+  .logo img {
+    height: 55px;
+  }
+}
+
+
+
+
+
+/* ====== HOME SLIDER STYLE ====== */
+/* Ganti foto di bagian HTML: img/slide1.jpg, slide2.jpg, slide3.jpg */
+
+.home-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+/* Setiap slide */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1.2s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* Lapisan gelap transparan */
+.slide .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 21, 79, 0.8), rgba(0, 21, 79, 0.3));
+  z-index: 1;
+}
+
+/* Konten slide */
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeInUp 1.5s ease;
+}
+
+/* Animasi masuk teks */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Tagline di atas judul */
+.slide-content .tagline {
+  display: inline-block;
+  background: #00a2ff;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  animation: fadeIn 1.2s ease;
+}
+
+/* Judul besar */
+.slide-content .title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 20px 0;
+  animation: slideUp 1.5s ease;
+}
+
+/* Deskripsi */
+.slide-content .desc {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  animation: fadeIn 1.8s ease;
+}
+
+/* Tombol */
+.btn-slide {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 40px;
+  background: #00a2ff;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: all 0.4s ease;
+}
+
+.btn-slide.outline {
+  background: transparent;
+  border: 2px solid #00a2ff;
+}
+
+.btn-slide:hover {
+  background: #0077ff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 162, 255, 0.5);
+}
+
+/* Panah navigasi */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  z-index: 3;
+  transition: background 0.3s;
+}
+
+.nav-arrow:hover {
+  background: rgba(0, 162, 255, 0.6);
+}
+
+.nav-arrow.prev {
+  left: 30px;
+}
+
+.nav-arrow.next {
+  right: 30px;
+}
+
+/* ====== SAMBUTAN KEPALA SEKOLAH ====== */
+.sambutan-section {
+  background: linear-gradient(180deg, #f7fbff 0%, #e6f0ff 100%);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* Bagian Header (Logo + Judul) */
+.sambutan-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sambutan-header img {
+  width: 150px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+  animation: fadeIn 1s ease;
+}
+
+.sambutan-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f3b8f;
+  position: relative;
+}
+
+.sambutan-header h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #1e90ff;
+  margin: 10px auto 0;
+  border-radius: 10px;
+}
+
+/* Konten utama (teks kiri, foto kanan) */
+.sambutan-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+/* Kiri: teks */
+.sambutan-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.sambutan-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.sambutan-quote {
+  font-style: italic;
+  color: #0f3b8f;
+  font-weight: 600;
+  margin: 20px 0 30px;
+}
+
+/* Tombol */
+.sambutan-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-sambutan,
+.btn-visimisi {
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-sambutan {
+  background: #0f3b8f;
+  color: #fff;
+}
+.btn-sambutan:hover {
+  background: #1e90ff;
+  transform: scale(1.05);
+}
+
+.btn-visimisi {
+  background: #797979;
+  color: #ffffff;
+}
+.btn-visimisi:hover {
+  background: #0077ff;
+  transform: scale(1.05);
+}
+
+/* Kanan: foto kepala sekolah */
+.sambutan-foto {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  animation: fadeUp 1s ease;
+}
+
+.sambutan-foto img {
+  width: 260px;
+  border-radius: 20px;
+  background: #fff;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+}
+.sambutan-foto img:hover {
+  transform: scale(1.05);
+}
+
+.sambutan-foto h3 {
+  font-size: 20px;
+  color: #0f3b8f;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.sambutan-foto p {
+  color: #555;
+  font-size: 15px;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .sambutan-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sambutan-text, .sambutan-foto {
+    text-align: center;
+  }
+  .sambutan-foto img {
+    width: 200px;
+  }
+}
+
+
+/* ====== KUNCI SUKSES SMK BINA CENDEKIA START ====== */
+.kunci-sukses {
+  background-color: #051233;
+  color: #fff;
+  padding: 80px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.kunci-sukses .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* BAGIAN ATAS */
+.top-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+/* === FOTO GURU 2 LANDSCAPE === */
+.image-box.landscape {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.image-box.landscape .img-wrapper {
+  text-align: center;
+}
+
+.image-box.landscape img {
+  width: 500px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 3px solid #00aaff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-box.landscape img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.4);
+}
+
+.image-box.landscape p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #a5c8ff;
+  font-weight: 500;
+}
+
+/* TEKS BAGIAN KANAN */
+.text-box {
+  flex: 1;
+}
+
+.text-box h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3ec6ff;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.text-box h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  line-height: 1.3;
+}
+
+.text-box p {
+  font-size: 16px;
+  color: #cfd8e3;
+  line-height: 1.7;
+  max-width: 90%;
+}
+
+/* BAGIAN FITUR */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.feature-item {
+  background-color: #0b1c45;
+  border-radius: 12px;
+  padding: 40px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-item:hover {
+  background-color: #0d245c;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 170, 255, 0.25);
+}
+
+.icon {
+  background-color: #00aaff;
+  color: #fff;
+  font-size: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.feature-item h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.feature-item p {
+  font-size: 15px;
+  color: #d0d8e0;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .image-box.landscape img {
+    width: 100%;
+    max-width: 600px;
+  }
+  .text-box p {
+    max-width: 100%;
+  }
+}
+/* ====== KUNCI SUKSES SMK BINA CENDEKIA END ====== */
+
+/* =======================
+   CSS: Statistik Sekolah
+   Ganti warna, font, dsb di sini
+======================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.stats-section {
+  background: linear-gradient(120deg, #007bff, #00bfff, #0099ff);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease-in-out infinite;
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efek cahaya lembut yang melintas */
+.stats-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: lightSweep 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Animasi latar belakang */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Cahaya diagonal melintas */
+@keyframes lightSweep {
+  0% { left: -50%; opacity: 0; }
+  30% { left: 120%; opacity: 1; }
+  100% { left: 150%; opacity: 0; }
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  flex: 1 1 200px;
+  margin: 10px;
+  padding: 20px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+}
+
+/* Efek kilau diagonal di hover */
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.6s ease;
+}
+
+/* ✨ Efek hover mewah */
+.stat-item:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 153, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.stat-item h2 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.stat-item p {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.divider {
+  width: 2px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 15px;
+}
+
+
+/* ====== PROGRAM JURUSAN SECTION ====== */
+.program-jurusan-container {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+.program-jurusan-title {
+  color: #0051ff;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.program-jurusan-subtitle {
+  color: #1a2a5a;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+
+/* ====== GRID ====== */
+.program-jurusan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ====== CARD ====== */
+.program-jurusan-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px;
+  width: 230px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-jurusan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.program-jurusan-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.jurusan-nama {
+  color: #0d1b50;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.jurusan-deskripsi {
+  color: #2a3f7a;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 992px) {
+  .program-jurusan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .program-jurusan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .program-jurusan-card {
+    width: 80%;
+  }
+}
+
+/* ========================================================= */
+/* ====== GURU & STAF KARYAWAN - SMK BINA CENDEKIA ====== */
+/* ========================================================= */
+
+
+/* ====== SECTION UTAMA ====== */
+.guru-staf-container {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f8fbff;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* ====== JUDUL & SUB JUDUL ====== */
+.guru-staf-title {
+  color: #004aad;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.guru-staf-subtitle {
+  color: #0c356a;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.guru-staf-subtitle::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #004aad;
+  margin: 10px auto 0;
+}
+
+
+/* ====== GRID TATA LETAK KARTU (RAPIH 5 KOLOM) ====== */
+.guru-staf-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 kolom sejajar */
+  gap: 25px;
+  justify-items: center;
+  align-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+/* RESPONSIF UNTUK TABLET */
+@media (max-width: 992px) {
+  .guru-staf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* RESPONSIF UNTUK HP */
+@media (max-width: 600px) {
+  .guru-staf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== SECTION UTAMA ====== */
+.guru-staf-container {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f8fbff;
+  font-family: "Poppins", sans-serif;
+  margin-top: 100px; /* jarak dari atas */
+  position: relative;
+}
+/* ====== GARIS PEMISAH ATAS (REVISI) ====== */
+.guru-staf-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;               /* ✅ Lebih panjang, dari 80% jadi 90% */
+  height: 3px;              /* ✅ Sedikit lebih tebal (dari 2px jadi 3px) */
+  background-color: #b0c4f0; /* ✅ Warna biru lembut */
+  border-radius: 2px;
+}
+
+
+/* ====== KARTU GURU / STAF ====== */
+.guru-staf-card {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.15);
+  transition: all 0.3s ease;
+  width: 210px;
+  min-height: 260px; /* biar semua kartu tinggi sama */
+  padding: 20px;
+  text-align: center;
+}
+
+.guru-staf-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 74, 173, 0.25);
+}
+
+/* Kalau kamu pakai foto di atas kartu */
+.guru-staf-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-bottom: 4px solid #004aad;
+}
+
+
+/* ====== TEKS DALAM KARTU ====== */
+.guru-nama {
+  font-size: 16px;
+  font-weight: 700;
+  color: #004aad;
+  margin-top: 15px;
+}
+
+.guru-jabatan {
+  color: #333;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+/* ====== IKON KONTAK (EMAIL & TELEPON) ====== */
+.guru-icon {
+  margin-top: 10px;
+}
+
+.guru-icon a {
+  color: white;
+  background-color: #004aad;
+  width: 35px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: background 0.3s ease;
+}
+
+.guru-icon a:hover {
+  background-color: #0073ff;
+}
+
+
+/* ====== TOMBOL LIHAT SEMUA ====== */
+.guru-button-container {
+  margin-top: 50px;
+}
+
+.guru-button {
+  background-color: #004aad;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.guru-button:hover {
+  background-color: #0073ff;
+  transform: translateY(-3px);
+}
+
+
+/* ====== RESPONSIVE TAMBAHAN (JAGA TATA LETAK TETAP RAPIH) ====== */
+@media (max-width: 1200px) {
+  .guru-staf-card {
+    width: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .guru-staf-card {
+    width: 85%;
+  }
+}
+
+
+/* ===== DOKUMENTASI & PRESTASI SISWA ===== */
+.dokumentasi-section {
+  padding: 60px 50px;
+  text-align: center;
+  background: #f8f9ff;
+}
+
+.dokumentasi-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #001b5e;
+  margin-bottom: 40px;
+}
+
+.dokumentasi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.dokumentasi-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.dokumentasi-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.dokumentasi-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.dokumentasi-item p {
+  padding: 10px;
+  color: #001b5e;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ===== TOMBOL LIHAT SEMUA ===== */
+.lihat-semua-container {
+  margin-top: 30px;
+}
+
+.lihat-semua-btn {
+  display: inline-block;
+  background-color: #001b5e;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 27, 94, 0.3);
+}
+
+.lihat-semua-btn:hover {
+  background-color: #3a8bff;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 27, 94, 0.4);
+}
+
+
+/* ===== VIDEO SECTION ===== */
+.video-section {
+  background: #001b5e;
+  color: white;
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.video-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.video-thumb {
+  position: relative;
+  display: block;
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(0.8);
+}
+
+.video-thumb:hover {
+  transform: scale(1.05);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: white;
+  opacity: 0.8;
+}
+
+.video-thumb p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* ====== PENDAFTARAN SECTION ====== */
+.pendaftaran {
+  background: #0054d1;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.pendaftaran-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.pendaftaran-text {
+  flex: 1 1 60%;
+  text-align: left;
+}
+
+.pendaftaran-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pendaftaran-text span {
+  color: #5bc0ff;
+}
+
+.pendaftaran-btn {
+  flex: 1 1 30%;
+  text-align: right;
+}
+
+.btn-daftar {
+  background: white;
+  color: #0d6efd;
+  font-weight: 600;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-daftar:hover {
+  background: #eaf0ff;
+}
+
+/* ====== FOOTER ====== */
+.footer {
+  background: #081a3b;
+  color: #ffffff;
+  padding: 60px 20px 30px;
+  position: relative;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-logo {
+  width: 277px;
+  margin-bottom: 15px;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  color: white;
+  margin-right: 19px;
+  font-size: 1.3rem;
+  transition: 0.5s;
+}
+
+.social-icons a:hover {
+  color: #2a5fff;
+}
+
+.footer-menu h3,
+.footer-contact h3,
+.footer-article h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-menu ul li {
+  margin-bottom: 9px;
+}
+
+.footer-menu ul li a {
+  color: #b5c0da;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.footer-menu ul li a:hover {
+  color: rgb(0, 115, 255);
+}
+
+.footer-contact p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #b5c0da;
+}
+
+.footer-article .article-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-article img {
+  width: 60px;
+  height: 45px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.footer-line {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 40px auto 20px;
+  width: 90%;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #b5c0da;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .pendaftaran-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pendaftaran-btn {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+/* ====== SOSIAL MEDIA FOOTER ====== */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.footer-social .social-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #1e3a8a; /* biru tua */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-social .social-icon:hover {
+  background-color: #2563eb; /* biru cerah saat hover */
+  transform: translateY(-3px);
+  color: #fff;
+}
